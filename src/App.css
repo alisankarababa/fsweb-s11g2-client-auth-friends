@@ -1,3 +1,41 @@
 .App {
   text-align: center;
 }
+
+
+.form-div {
+    color: black;
+    background-color: white;
+    padding: 1em;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.form__label {
+    font-size: 2rem;
+    text-align: left;
+}
+
+.form__input {
+    background-color: black;
+    font-size: 1.5rem;
+    padding: 1em;
+    color: white;
+}
+
+.form__submit {
+    border: none;
+    font-size: 1.5rem;
+    padding: 1em;
+    color: white;
+    background-color: black;
+}
