@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.seperator {
+    background-color: black;
+    height: 5px;
+}
+
 .container {
     max-width: 500px;
     margin: 0 auto;
