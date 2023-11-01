@@ -49,3 +49,9 @@
     color: white;
     background-color: black;
 }
+
+
+.friends-list {
+    text-align: left;
+    display: inline-block;
+}
