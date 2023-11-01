@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 
-import { useContext } from "react";
-import { LoginContext } from "../contexts/LoginContext";
+import { useAuthenticationContext } from "../contexts/AuthenticationContext";
+
 
 export default function Login({className}) {
 
     const { register, handleSubmit } = useForm();
-    const { hLogin } = useContext( LoginContext );
+    const { hLogin } = useAuthenticationContext();
 
     function onSubmit(credentials) {
         hLogin(credentials);
