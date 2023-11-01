@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useAuthenticationContext } from "../contexts/AuthenticationContext";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 
 export default function AddFriend({className}) {
 
+    const history = useHistory();
     const { register, errors, handleSubmit } = useForm();
 
     const { httpReqCreator } = useAuthenticationContext();
@@ -12,7 +14,9 @@ export default function AddFriend({className}) {
 
         console.log(formData);
         httpReqCreator.post("/friends" ,formData)
-        .then((resp) => console.log(resp))
+        .then((resp) => {
+            history.push("/friends");
+        })
         .catch((err) => console.error(err));
     }
 
