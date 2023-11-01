@@ -1,18 +1,28 @@
 import './App.css';
 import Login from './component/Login';
 import AddFriend from "./component/AddFriend"
-import ProtectedPage from "./component/ProtectedPage"
+import FriendsList from './component/FriendsList';
+import Header from './component/Header';
 
 import {
     Switch,
     Route,
 } from "react-router-dom";
 
+import PrivateRoute from './component/PrivateRoute';
+
+const headerLinks = [
+    { text: "LOGIN.", path: "/login" },
+    { text: "FRIENDS.", path: "/friends" },
+    { text: "ADDFRIEND.", path: "/friends/add" },
+]
+
 function App() {
   return (
     <>
     <div className="App">
-      <h1>Client Auth Projesi: Friends</h1>
+        <Header title="FRIENDS DATABASE" listOfLinks={headerLinks}/>
+        <div className='seperator'></div>
 
     <Switch >
         <Route exact path="/">
@@ -22,10 +32,14 @@ function App() {
             <Login className="container"/>
         </Route>
         <Route exact path="/friends">
-            <div>FRIENDS PAGE</div>
+            <PrivateRoute>
+                <FriendsList />
+            </PrivateRoute>
         </Route>
         <Route exact path="/friends/add">
-            <ProtectedPage PageComponent={AddFriend} referredFrom="/friends/add" className="container"/>
+            <PrivateRoute>
+                <AddFriend className="container"/>
+            </PrivateRoute>
         </Route>
 
     </Switch>

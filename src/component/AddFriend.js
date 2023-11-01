@@ -1,17 +1,21 @@
 import { useForm } from "react-hook-form";
+import { useAuthenticationContext } from "../contexts/AuthenticationContext";
 
 
-export default function Login({className}) {
-
+export default function AddFriend({className}) {
 
     const { register, errors, handleSubmit } = useForm();
 
+    const { httpReqCreator } = useAuthenticationContext();
 
     function onSubmit(formData) {
+
         console.log(formData);
+        httpReqCreator.post("/friends" ,formData)
+        .then((resp) => console.log(resp))
+        .catch((err) => console.error(err));
     }
 
-    console.log("className", className);
 	return (
 		<div className={`${ className ? className : "" } form-div`}>
 			<h1 className="form-title">ADD FRIEND</h1>
@@ -22,15 +26,23 @@ export default function Login({className}) {
                     id="username"
                     className="form__input "
 					type="text"
-					{...register("friend_name", { required: true, maxLength: 80 })}
+					{...register("name", { required: true, maxLength: 80 })}
 				/>
 
-                <label className="form__label" htmlFor="password">PASSWORD</label>
+                <label className="form__label" htmlFor="email">EMAIL</label>
 				<input
-                    id="password"
+                    id="email"
                     className="form__input"
 					type="email"
-					{...register("friend_email", { required: true, maxLength: 80 })}
+					{...register("email", { required: true, maxLength: 80 })}
+				/>
+
+                <label className="form__label" htmlFor="age">AGE</label>
+				<input
+                    id="age"
+                    className="form__input"
+					type="number"
+					{...register("age", { required: true, maxLength: 80 })}
 				/>
 
 				<input className="form__submit" type="submit" value="SUBMIT"/>
