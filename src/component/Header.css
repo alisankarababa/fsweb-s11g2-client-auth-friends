@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+}
+
+.header__title {
+    font-size: 3em;
+    font-weight: bold;
+    color: black;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    column-gap: 1em;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1.5em 1em;
+}
+
+.header__button {
+    border: none;
+    font-size: inherit;
+    color: white;
+    background-color: black;
+    padding: 1.5em 1em;
+}
+
